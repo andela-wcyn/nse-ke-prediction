@@ -25,11 +25,12 @@ class GoogleSpreadSheets(object):
 
     BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    def __init__(self, sheet_name="Sheet1"):
+    def __init__(self, sheet_name="Untitled", worksheet_title="Sheet1"):
         # Use credentials to create a client to interact with the Google
         # Drive API
         # Check if client_secret.json file exists
         self.sheet_name = sheet_name
+        self.worksheet_title = worksheet_title
         file_path = os.path.join(self.BASE_DIR, 'client_secret.json')
         if os.path.isfile(file_path):
             self.credentials = ServiceAccountCredentials\
@@ -43,7 +44,8 @@ class GoogleSpreadSheets(object):
         self.client = gspread.authorize(self.credentials)
 
         # Find a workbook by name and open the first sheet
-        self.sheet = self.client.open(self.sheet_name).sheet1
+        self.sheet = self.client.open(self.sheet_name).worksheet(
+            self.worksheet_title)
 
     def append_row(self, data):
         rows_len = self.sheet.row_count
@@ -55,5 +57,5 @@ class GoogleSpreadSheets(object):
 
 
 if __name__ == "__main__":
-    spread_sheet = GoogleSpreadSheets("NSE Stocks")
+    spread_sheet = GoogleSpreadSheets("NSE Stocks", "DTK")
     print(spread_sheet.get_all_records())
