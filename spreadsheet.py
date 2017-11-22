@@ -51,9 +51,9 @@ class GoogleSpreadSheets(object):
         rows_len = self.sheet.row_count
         self.sheet.insert_row(data, rows_len+1)
 
-    def get_all_records(self):
+    def get_all_records(self, head=1):
         # Extract and print all of the values
-        return self.sheet.get_all_records()
+        return self.sheet.get_all_records(head=head)
 
 
 if __name__ == "__main__":
