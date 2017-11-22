@@ -21,11 +21,11 @@ Run this command to set up an IPython kernel for your virtual environment:
 ```
 $ python -m ipykernel install --user --name <your ENVNAME> --display-name "Python (whatever you want to call it)"
 ```
-The display name is what you will pick on the list of kernels when you run the jupyter npotebook.
+The display name is the name of your new Kernel. It is what you will pick on the list of kernels when you run the jupyter notebook later on.
 
 Finally, run:
 ```
-jupyter notebook
+$ jupyter notebook
 ```
 This will open up the directory in your default browser. Click the IPython notebook named `nse-stock-prediction.ipynb`. The notebook will open up in a new tab.
 Here, it may ask you to select a kernel. Choose the kernel whose name you had indicated in the earlier command.
